@@ -76,6 +76,9 @@ body {
 
   /* to center it, move back 50 percent of size of element to x and y */
   transform: translate(-50%, -50%);
+
+  /* centers text or any inline / inline-block elements */
+  text-align: center;
 }
 
 .heading-primary {
@@ -84,6 +87,7 @@ body {
 
   /* back part of element is hidden during transform, this is for smoothness hack */
   backface-visibility: hidden;
+  margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -168,4 +172,39 @@ body {
   100% {
     transform: translate(0);
   }
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  border: 1px solid cyan;
+
+  /* allow other elements to sit to their left and right */
+  display: inline-block;
+  border-radius: 100px;
+
+  /* allows you to change property values smoothly (from one value to another),
+  over a given duration. all as in all properties, generally add to init state */
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+
+  /* direction x, y width and how much blur,
+  rgb followed by transparency, all black and somewhat transparent*/
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* when you click the element */
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: white;
+  color: #777777;
 }
