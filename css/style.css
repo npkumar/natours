@@ -62,6 +62,10 @@ body {
   /* width will be figured out by the browser */
 }
 
+.logo:hover {
+  animation: rotate 1s linear;
+}
+
 
 .text-box {
   position: absolute;
@@ -77,6 +81,9 @@ body {
 .heading-primary {
   color: #ffffff;
   text-transform: uppercase;
+
+  /* back part of element is hidden during transform, this is for smoothness hack */
+  backface-visibility: hidden;
 }
 
 .heading-primary-main {
@@ -86,6 +93,19 @@ body {
 
   /* space between letters, pretty rad! */
   letter-spacing: 35px;
+
+  /* need to specify duration, not just name */
+  animation-name: moveInLeft;
+  animation-duration: 2s;
+
+  /* delay before start of animation */
+  animation-delay: 0.1s;
+
+  /* how many times do you want this to happen */
+  animation-iteration-count: 1;
+
+  /* how animation should progress over given duration; ease-in is fast to slow */
+  animation-timing-function: ease-in;
 }
 
 .heading-primary-sub {
@@ -93,4 +113,59 @@ body {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 17.4px;
+
+  /* awesome shorthand */
+  animation: moveInRight 1s ease-in;
+}
+
+@keyframes moveInLeft {
+  0% {
+    /* invisible */
+    opacity: 0;
+    transform: translateX(-100px) rotate(-10deg);
+  }
+
+  50% {
+    transform: translateX(10px) rotate(10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    /* invisible */
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(-270deg);
+  }
+
+  33% {
+    transform: rotate(-180deg);
+  }
+
+  66% {
+    transform: rotate(-90deg);
+  }
+
+  100% {
+    transform: translate(0);
+  }
 }
