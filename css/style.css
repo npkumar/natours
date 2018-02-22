@@ -43,5 +43,54 @@ body {
   background-position: top;
 
   /* specify coordinates of poly where the clip is visible, clockwise */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%)
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  position: relative;
+}
+
+
+.logo-box {
+  position: absolute;
+
+  /* this would be relative to the parent, so have to set header as relative */
+  top: 40px;
+  left: 40px;
+}
+
+.logo {
+  height: 35px;
+  /* width will be figured out by the browser */
+}
+
+
+.text-box {
+  position: absolute;
+
+  /* this in relation to parent element */
+  top: 40%;
+  left: 50%;
+
+  /* to center it, move back 50 percent of size of element to x and y */
+  transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.heading-primary-main {
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+
+  /* space between letters, pretty rad! */
+  letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
 }
