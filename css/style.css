@@ -6,3 +6,42 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+* {
+  margin: 0;
+  padding: 0;
+
+  /* padding to be included in height and width */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777777;
+  padding: 30px;
+}
+
+.header {
+  /* 95 percent of view height */
+  height: 95vh;
+
+  /* gradient from left to right bottom, light to dark, under which you have the hero image */
+  background-image: linear-gradient(
+    to right bottom,
+    #7ed56fd0, 
+    #28b485d3
+    ),
+    url('../img/hero.jpg');
+
+  /* trys to fit element in size of viewport */
+  background-size: cover;
+
+  /* on resizing veiw port, the image top remains at its position without crop */
+  background-position: top;
+
+  /* specify coordinates of poly where the clip is visible, clockwise */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%)
+}
