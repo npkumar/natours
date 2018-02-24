@@ -7,21 +7,32 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
 
-  /* padding to be included in height and width */
-  box-sizing: border-box;
+  /* forces inheriting box-sizing from body for all elements */
+  box-sizing: inherit;
+}
+
+html {
+  /* default font size of browser is 16px */
+  /* we want 10 px, so (100 / 16) * 10 */
+  font-size: 62.5%;
 }
 
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  /* font-size: 16px; */
   line-height: 1.7;
   color: #777777;
-  padding: 30px;
+  padding: 3rem;
+
+  /* padding to be included in height and width */
+  box-sizing: border-box;
 }
 
 .header {
@@ -53,12 +64,12 @@ body {
   position: absolute;
 
   /* this would be relative to the parent, so have to set header as relative */
-  top: 40px;
-  left: 40px;
+  top: 4rem;
+  left: 4rem;
 }
 
 .logo {
-  height: 35px;
+  height: 3.5rem;
   /* width will be figured out by the browser */
 }
 
@@ -87,23 +98,23 @@ body {
 
   /* back part of element is hidden during transform, this is for smoothness hack */
   backface-visibility: hidden;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 }
 
 .heading-primary-main {
   display: block;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
 
   /* space between letters, pretty rad! */
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
 
   /* need to specify duration, not just name */
   animation-name: moveInLeft;
   animation-duration: 2s;
 
   /* delay before start of animation */
-  animation-delay: 0.1s;
+  animation-delay: .1s;
 
   /* how many times do you want this to happen */
   animation-iteration-count: 1;
@@ -114,9 +125,9 @@ body {
 
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 17.4px;
+  letter-spacing: 1.75rem;
 
   /* awesome shorthand */
   animation: moveInRight 1s ease-in;
@@ -126,11 +137,11 @@ body {
   0% {
     /* invisible */
     opacity: 0;
-    transform: translateX(-100px) rotate(-10deg);
+    transform: translateX(-10rem) rotate(-10deg);
   }
 
   50% {
-    transform: translateX(10px) rotate(10deg);
+    transform: translateX(1rem) rotate(10deg);
   }
 
   100% {
@@ -143,11 +154,11 @@ body {
   0% {
     /* invisible */
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(10rem);
   }
 
   80% {
-    transform: translateX(-10px);
+    transform: translateX(-1rem);
   }
 
   100% {
@@ -178,7 +189,7 @@ body {
   0% {
     /* invisible */
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(4rem);
   }
 
   100% {
@@ -191,32 +202,33 @@ body {
 .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px;
-  border: 1px solid cyan;
+  padding: 1.5rem 4rem;
+  border: .1rem solid cyan;
 
   /* allow other elements to sit to their left and right */
   display: inline-block;
-  border-radius: 100px;
+  border-radius: 10rem;
 
   /* allows you to change property values smoothly (from one value to another),
   over a given duration. all as in all properties, generally add to init state */
-  transition: all 0.2s;
+  transition: all .2s;
 
   position: relative;
+  font-size: 1.6rem;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
+  transform: translateY(-0.3rem);
 
   /* direction x, y width and how much blur,
   rgb followed by transparency, all black and somewhat transparent*/
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 /* when you click the element */
 .btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 .btn-white {
@@ -230,7 +242,7 @@ body {
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 100px;
+  border-radius: 10rem;
 
 
   /* the content after should be absolute and relative to the btn element */
