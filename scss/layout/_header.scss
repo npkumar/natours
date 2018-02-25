@@ -1,0 +1,55 @@
+.header {
+  /* 95 percent of view height */
+  height: 95vh;
+
+  /* gradient from left to right bottom, light to dark, under which you have the hero image */
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($color-primary-light, 0.8), 
+    rgba($color-primary-dark, 0.8)
+    ),
+    url('../img/hero.jpg');
+
+  /* trys to fit element in size of viewport */
+  background-size: cover;
+
+  /* on resizing veiw port, the image top remains at its position without crop */
+  background-position: top;
+
+  /* specify coordinates of poly where the clip is visible, clockwise */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  position: relative;
+
+  &__logo-box {
+    position: absolute;
+  
+    /* this would be relative to the parent, so have to set header as relative */
+    top: 4rem;
+    left: 4rem;
+  }
+  
+  &__logo {
+    height: 3.5rem;
+    /* width will be figured out by the browser */
+  }
+  
+  &__logo:hover {
+    animation: rotate 1s linear;
+  }
+  
+  
+  &__text-box {
+    position: absolute;
+  
+    /* this in relation to parent element */
+    top: 40%;
+    left: 50%;
+  
+    /* to center it, move back 50 percent of size of element to x and y */
+    transform: translate(-50%, -50%);
+  
+    /* centers text or any inline / inline-block elements */
+    text-align: center;
+  }
+}

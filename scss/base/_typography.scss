@@ -1,0 +1,53 @@
+body {
+  // this is here because of typography related stuff
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: $color-gray-dark;
+  padding: 3rem;
+
+  /* padding to be included in height and width */
+  box-sizing: border-box;
+}
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+
+  /* back part of element is hidden during transform, this is for smoothness hack */
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+  
+    /* space between letters, pretty rad! */
+    letter-spacing: 3.5rem;
+  
+    /* need to specify duration, not just name */
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+  
+    /* delay before start of animation */
+    animation-delay: .1s;
+  
+    /* how many times do you want this to happen */
+    animation-iteration-count: 1;
+  
+    /* how animation should progress over given duration; ease-in is fast to slow */
+    animation-timing-function: ease-in;
+  }
+  
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+  
+    /* awesome shorthand */
+    animation: moveInRight 1s ease-in;
+  }
+}
