@@ -8,10 +8,11 @@ Dark green: #28b485
 */
 
 $color-primary: #7ed56f;
-$color-primary-light: #55c57a;
+$color-primary-light:#55c57a;
 $color-primary-dark: #28b485;
 $color-gray-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 *,
 *::before,
@@ -63,39 +64,38 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
   position: relative;
-}
 
-
-.header__logo-box {
-  position: absolute;
-
-  /* this would be relative to the parent, so have to set header as relative */
-  top: 4rem;
-  left: 4rem;
-}
-
-.header__logo {
-  height: 3.5rem;
-  /* width will be figured out by the browser */
-}
-
-.header__logo:hover {
-  animation: rotate 1s linear;
-}
-
-
-.header__text-box {
-  position: absolute;
-
-  /* this in relation to parent element */
-  top: 40%;
-  left: 50%;
-
-  /* to center it, move back 50 percent of size of element to x and y */
-  transform: translate(-50%, -50%);
-
-  /* centers text or any inline / inline-block elements */
-  text-align: center;
+  &__logo-box {
+    position: absolute;
+  
+    /* this would be relative to the parent, so have to set header as relative */
+    top: 4rem;
+    left: 4rem;
+  }
+  
+  &__logo {
+    height: 3.5rem;
+    /* width will be figured out by the browser */
+  }
+  
+  &__logo:hover {
+    animation: rotate 1s linear;
+  }
+  
+  
+  &__text-box {
+    position: absolute;
+  
+    /* this in relation to parent element */
+    top: 40%;
+    left: 50%;
+  
+    /* to center it, move back 50 percent of size of element to x and y */
+    transform: translate(-50%, -50%);
+  
+    /* centers text or any inline / inline-block elements */
+    text-align: center;
+  }
 }
 
 .heading-primary {
@@ -105,38 +105,38 @@ body {
   /* back part of element is hidden during transform, this is for smoothness hack */
   backface-visibility: hidden;
   margin-bottom: 6rem;
-}
 
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-
-  /* space between letters, pretty rad! */
-  letter-spacing: 3.5rem;
-
-  /* need to specify duration, not just name */
-  animation-name: moveInLeft;
-  animation-duration: 2s;
-
-  /* delay before start of animation */
-  animation-delay: .1s;
-
-  /* how many times do you want this to happen */
-  animation-iteration-count: 1;
-
-  /* how animation should progress over given duration; ease-in is fast to slow */
-  animation-timing-function: ease-in;
-}
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
-
-  /* awesome shorthand */
-  animation: moveInRight 1s ease-in;
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+  
+    /* space between letters, pretty rad! */
+    letter-spacing: 3.5rem;
+  
+    /* need to specify duration, not just name */
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+  
+    /* delay before start of animation */
+    animation-delay: .1s;
+  
+    /* how many times do you want this to happen */
+    animation-iteration-count: 1;
+  
+    /* how animation should progress over given duration; ease-in is fast to slow */
+    animation-timing-function: ease-in;
+  }
+  
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+  
+    /* awesome shorthand */
+    animation: moveInRight 1s ease-in;
+  }
 }
 
 @keyframes moveInLeft {
@@ -204,82 +204,85 @@ body {
   }
 }
 
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  border: .1rem solid cyan;
+.btn {
 
-  /* allow other elements to sit to their left and right */
-  display: inline-block;
-  border-radius: 10rem;
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    border: .1rem solid cyan;
+  
+    /* allow other elements to sit to their left and right */
+    display: inline-block;
+    border-radius: 10rem;
+  
+    /* allows you to change property values smoothly (from one value to another),
+    over a given duration. all as in all properties, generally add to init state */
+    transition: all .2s;
+  
+    position: relative;
+    font-size: 1.6rem;
+  }
+  
+  &:hover {
+    transform: translateY(-0.3rem);
+  
+    /* direction x, y width and how much blur,
+    rgb followed by transparency, all black and somewhat transparent*/
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
 
-  /* allows you to change property values smoothly (from one value to another),
-  over a given duration. all as in all properties, generally add to init state */
-  transition: all .2s;
+    &::after {
+      /* how big you want the new element to be */
+      /* we want animation, but need to put it in initial state &::after */
+      transform: scaleX(1.4) scaleY(1.6);
+    
+      /* we need to fade this out */
+      opacity: 0;
+    }
+  }
+  
+  /* when you click the element */
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+  
+  &--white {
+    background-color: $color-white;
+    color: $color-gray-dark;
 
-  position: relative;
-  font-size: 1.6rem;
-}
-
-.btn:hover {
-  transform: translateY(-0.3rem);
-
-  /* direction x, y width and how much blur,
-  rgb followed by transparency, all black and somewhat transparent*/
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-}
-
-/* when you click the element */
-.btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-}
-
-.btn--white {
-  background-color: $color-white;
-  color: $color-gray-dark;
-}
-
-/* add some content after */
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-
-
-  /* the content after should be absolute and relative to the btn element */
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  /* defines position of element on top of each other, we want this to be
-  behind the btn */
-  z-index: -1;
-
-  transition: all .4s;
-}
-
-.btn--white::after {
-  background-color: $color-white;
-}
-
-.btn:hover::after {
-  /* how big you want the new element to be */
-  /* we want animation, but need to put it in initial state .btn::after */
-  transform: scaleX(1.4) scaleY(1.6);
-
-  /* we need to fade this out */
-  opacity: 0;
-}
-
-.btn--animated {
-  /* last one being animation delay */
-  animation: moveInBottom 0.4s ease-in-out 0.75s;
-
-  /* the 0% transform thing for moveInBottom is applied before animation starts */
-  animation-fill-mode: backwards;
+    &::after {
+      background-color: $color-white;
+    }
+  }
+  
+  /* add some content after */
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+  
+  
+    /* the content after should be absolute and relative to the btn element */
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    /* defines position of element on top of each other, we want this to be
+    behind the btn */
+    z-index: -1;
+  
+    transition: all .4s;
+  }
+  
+  &--animated {
+    /* last one being animation delay */
+    animation: moveInBottom 0.4s ease-in-out 0.75s;
+  
+    /* the 0% transform thing for moveInBottom is applied before animation starts */
+    animation-fill-mode: backwards;
+  }
 }
