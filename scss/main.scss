@@ -6,136 +6,203 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+$color-primary: #7ed56f;
+$color-primary-light: #55c57a;
+$color-primary-dark: #28b485;
+$color-gray-dark: #777;
+$color-white: #fff;
+
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
+
   /* forces inheriting box-sizing from body for all elements */
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 html {
   /* default font size of browser is 16px */
   /* we want 10 px, so (100 / 16) * 10 */
-  font-size: 62.5%; }
+  font-size: 62.5%;
+}
 
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   /* font-size: 16px; */
   line-height: 1.7;
-  color: #777;
+  color: $color-gray-dark;
   padding: 3rem;
+
   /* padding to be included in height and width */
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .header {
   /* 95 percent of view height */
   height: 95vh;
+
   /* gradient from left to right bottom, light to dark, under which you have the hero image */
-  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($color-primary-light, 0.8), 
+    rgba($color-primary-dark, 0.8)
+    ),
+    url('../img/hero.jpg');
+
   /* trys to fit element in size of viewport */
   background-size: cover;
+
   /* on resizing veiw port, the image top remains at its position without crop */
   background-position: top;
+
   /* specify coordinates of poly where the clip is visible, clockwise */
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  position: relative; }
+
+  position: relative;
+}
+
 
 .header__logo-box {
   position: absolute;
+
   /* this would be relative to the parent, so have to set header as relative */
   top: 4rem;
-  left: 4rem; }
+  left: 4rem;
+}
 
 .header__logo {
   height: 3.5rem;
-  /* width will be figured out by the browser */ }
+  /* width will be figured out by the browser */
+}
 
 .header__logo:hover {
-  animation: rotate 1s linear; }
+  animation: rotate 1s linear;
+}
+
 
 .header__text-box {
   position: absolute;
+
   /* this in relation to parent element */
   top: 40%;
   left: 50%;
+
   /* to center it, move back 50 percent of size of element to x and y */
   transform: translate(-50%, -50%);
+
   /* centers text or any inline / inline-block elements */
-  text-align: center; }
+  text-align: center;
+}
 
 .heading-primary {
-  color: #fff;
+  color: $color-white;
   text-transform: uppercase;
+
   /* back part of element is hidden during transform, this is for smoothness hack */
   backface-visibility: hidden;
-  margin-bottom: 6rem; }
+  margin-bottom: 6rem;
+}
 
 .heading-primary--main {
   display: block;
   font-size: 6rem;
   font-weight: 400;
+
   /* space between letters, pretty rad! */
   letter-spacing: 3.5rem;
+
   /* need to specify duration, not just name */
   animation-name: moveInLeft;
   animation-duration: 2s;
+
   /* delay before start of animation */
   animation-delay: .1s;
+
   /* how many times do you want this to happen */
   animation-iteration-count: 1;
+
   /* how animation should progress over given duration; ease-in is fast to slow */
-  animation-timing-function: ease-in; }
+  animation-timing-function: ease-in;
+}
 
 .heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1.75rem;
+
   /* awesome shorthand */
-  animation: moveInRight 1s ease-in; }
+  animation: moveInRight 1s ease-in;
+}
 
 @keyframes moveInLeft {
   0% {
     /* invisible */
     opacity: 0;
-    transform: translateX(-10rem) rotate(-10deg); }
+    transform: translateX(-10rem) rotate(-10deg);
+  }
+
   50% {
-    transform: translateX(1rem) rotate(10deg); }
+    transform: translateX(1rem) rotate(10deg);
+  }
+
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInRight {
   0% {
     /* invisible */
     opacity: 0;
-    transform: translateX(10rem); }
+    transform: translateX(10rem);
+  }
+
   80% {
-    transform: translateX(-1rem); }
+    transform: translateX(-1rem);
+  }
+
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes rotate {
   0% {
-    transform: rotate(-270deg); }
+    transform: rotate(-270deg);
+  }
+
   33% {
-    transform: rotate(-180deg); }
+    transform: rotate(-180deg);
+  }
+
   66% {
-    transform: rotate(-90deg); }
+    transform: rotate(-90deg);
+  }
+
   100% {
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInBottom {
   0% {
     /* invisible */
     opacity: 0;
-    transform: translateY(4rem); }
+    transform: translateY(4rem);
+  }
+
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 .btn:link,
 .btn:visited {
@@ -143,29 +210,37 @@ body {
   text-decoration: none;
   padding: 1.5rem 4rem;
   border: .1rem solid cyan;
+
   /* allow other elements to sit to their left and right */
   display: inline-block;
   border-radius: 10rem;
+
   /* allows you to change property values smoothly (from one value to another),
   over a given duration. all as in all properties, generally add to init state */
   transition: all .2s;
+
   position: relative;
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+}
 
 .btn:hover {
   transform: translateY(-0.3rem);
+
   /* direction x, y width and how much blur,
   rgb followed by transparency, all black and somewhat transparent*/
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
 
 /* when you click the element */
 .btn:active {
   transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
 
 .btn--white {
-  background-color: #fff;
-  color: #777; }
+  background-color: $color-white;
+  color: $color-gray-dark;
+}
 
 /* add some content after */
 .btn::after {
@@ -174,27 +249,37 @@ body {
   height: 100%;
   width: 100%;
   border-radius: 10rem;
+
+
   /* the content after should be absolute and relative to the btn element */
   position: absolute;
   top: 0;
   left: 0;
+
   /* defines position of element on top of each other, we want this to be
   behind the btn */
   z-index: -1;
-  transition: all .4s; }
+
+  transition: all .4s;
+}
 
 .btn--white::after {
-  background-color: #fff; }
+  background-color: $color-white;
+}
 
 .btn:hover::after {
   /* how big you want the new element to be */
   /* we want animation, but need to put it in initial state .btn::after */
   transform: scaleX(1.4) scaleY(1.6);
+
   /* we need to fade this out */
-  opacity: 0; }
+  opacity: 0;
+}
 
 .btn--animated {
   /* last one being animation delay */
   animation: moveInBottom 0.4s ease-in-out 0.75s;
+
   /* the 0% transform thing for moveInBottom is applied before animation starts */
-  animation-fill-mode: backwards; }
+  animation-fill-mode: backwards;
+}
