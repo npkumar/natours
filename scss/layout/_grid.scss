@@ -1,0 +1,25 @@
+.row {
+  // if viewport is small, fill that much, else this
+  max-width: $grid-width;
+  background-color: #eee;
+
+  // center row in viewport, block elements, top and bottom is 0, l and r auto
+  margin: 0 auto;
+
+  // apply on all except last child
+  &:not(:last-child) {
+    margin-bottom: $gutter-vertical;
+  }
+
+  @include clearfix;
+
+  .col-1-of-2 {
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+    background-color: orange;
+    float: left;
+
+    &:not(:last-child) {
+      margin-right: $gutter-horizontal;
+    }
+  }
+}
